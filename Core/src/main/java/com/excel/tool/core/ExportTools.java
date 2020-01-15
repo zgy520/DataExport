@@ -25,7 +25,7 @@ public class ExportTools<T> {
     private int curRow = 0;
 
     // 导出excel
-    public void generateExcel(ExcelExportConfig<T> excelExportConfig) throws Exception {
+    public String generateExcel(ExcelExportConfig<T> excelExportConfig) throws Exception {
         Workbook workbook = new XSSFWorkbook();
         // 判断传入的配置类是否符合要求
         if (excelExportConfig.getTitles() == null || excelExportConfig.getTitles().length == 0){
@@ -47,6 +47,7 @@ public class ExportTools<T> {
         // 保存文件
         String saveName = saveFile(workbook,excelExportConfig.getExcelFileName());
         log.info("保存后的文件名为:" + saveName);
+        return saveName;
     }
 
     /**
